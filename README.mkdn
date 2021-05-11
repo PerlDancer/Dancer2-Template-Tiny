@@ -1,0 +1,62 @@
+# NAME
+
+Dancer2::Template::Tiny - Template::Tiny engine for Dancer2
+
+# VERSION
+
+version 0.1.0
+
+# SYNOPSIS
+
+This template engine allows you to use [Template::Tiny](https://metacpan.org/pod/Template%3A%3ATiny) in [Dancer2](https://metacpan.org/pod/Dancer2).
+
+[Template::Tiny](https://metacpan.org/pod/Template%3A%3ATiny) is an implementation of a subset of [Template::Toolkit](https://metacpan.org/pod/Template%3A%3AToolkit) (the
+major parts) which takes much less memory and is faster. If you're only using
+the main functions of Template::Toolkit, you could use Template::Tiny. You can
+also seamlessly move back to Template::Toolkit whenever you want.
+
+However, Dancer2 uses a modified version of [Template::Tiny](https://metacpan.org/pod/Template%3A%3ATiny), which is [Dancer2::Template::Implementation::ForkedTiny](https://metacpan.org/pod/Dancer2%3A%3ATemplate%3A%3AImplementation%3A%3AForkedTiny). It adds 2 features :
+
+- opening and closing tag are now configurable
+- CodeRefs are evaluated and their results is inserted in the result.
+
+You can read more on [Dancer2::Template::Implementation::ForkedTiny](https://metacpan.org/pod/Dancer2%3A%3ATemplate%3A%3AImplementation%3A%3AForkedTiny).
+
+To use this engine, all you need to configure in your [Dancer2](https://metacpan.org/pod/Dancer2)'s
+`config.yaml`:
+
+    template: "tiny"
+
+Of course, you can also set this **while** working using `set`:
+
+    # code code code
+    set template => 'tiny';
+
+Since [Dancer2](https://metacpan.org/pod/Dancer2) has internal support for a wrapper-like option with the
+`layout` configuration option, you can have a [Template::Toolkit](https://metacpan.org/pod/Template%3A%3AToolkit)-like WRAPPER
+even though [Template::Tiny](https://metacpan.org/pod/Template%3A%3ATiny) doesn't really support it.
+
+# METHODS
+
+## render($template, \\%tokens)
+
+Renders the template.  The first arg is a filename for the template file
+or a reference to a string that contains the template.  The second arg
+is a hashref for the tokens that you wish to pass to
+[Template::Toolkit](https://metacpan.org/pod/Template%3A%3AToolkit) for rendering.
+
+# SEE ALSO
+
+[Dancer2](https://metacpan.org/pod/Dancer2), [Dancer2::Core::Role::Template](https://metacpan.org/pod/Dancer2%3A%3ACore%3A%3ARole%3A%3ATemplate), [Template::Tiny](https://metacpan.org/pod/Template%3A%3ATiny),
+[Dancer2::Template::Implementation::ForkedTiny](https://metacpan.org/pod/Dancer2%3A%3ATemplate%3A%3AImplementation%3A%3AForkedTiny).
+
+# AUTHOR
+
+Dancer Core Developers
+
+# COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2021 by Dancer Core Developers.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
